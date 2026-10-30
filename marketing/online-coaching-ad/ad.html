@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>Online Coaching Ad</title>
+<style>
+@font-face{font-family:Cairo;src:url(fonts/cairo-ar.woff2) format('woff2');font-weight:200 1000;unicode-range:U+0600-06FF,U+0750-077F,U+200C-200E,U+FB50-FDFF,U+FE70-FEFC}
+@font-face{font-family:Cairo;src:url(fonts/cairo-lat.woff2) format('woff2');font-weight:200 1000;unicode-range:U+0000-00FF,U+2000-206F,U+2122,U+2212}
+:root{--bg:#0A0A0C;--lime:#D4FF3A;--card:#141418;--line:#26262E;--muted:#8E8E99;--red:#FF5A5A}
+*{box-sizing:border-box}
+html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:var(--bg);font-family:Cairo,sans-serif;color:#fff;direction:rtl}
+#stage{position:fixed;left:0;top:0;width:1080px;height:1920px;overflow:hidden;contain:paint}
+.bg{position:absolute;inset:0;overflow:hidden}
+.blob{position:absolute;width:900px;height:900px;border-radius:50%;filter:blur(140px);opacity:.22}
+.b1{background:var(--lime);top:-300px;right:-300px}
+.b2{background:#3A6BFF;bottom:-350px;left:-350px;opacity:.18}
+.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 2px,transparent 2px),linear-gradient(90deg,rgba(255,255,255,.035) 2px,transparent 2px);background-size:90px 90px}
+.brand{position:absolute;top:150px;left:0;right:0;text-align:center;font-weight:800;letter-spacing:10px;font-size:26px;color:var(--muted);direction:ltr;z-index:5}
+.brand b{color:var(--lime)}
+.scene{position:absolute;inset:0;padding:260px 90px 360px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;opacity:0}
+h1{font-size:104px;font-weight:900;line-height:1.15;margin:0}
+h2{font-size:84px;font-weight:900;line-height:1.2;margin:0}
+p{margin:0}
+.lime{color:var(--lime)}
+.muted{color:var(--muted)}
+
+/* S1 */
+.cal{display:grid;grid-template-columns:repeat(7,116px);gap:18px;direction:rtl;margin:70px 0}
+.day{height:116px;border-radius:24px;border:3px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:40px;font-weight:800;color:var(--muted);position:relative}
+.day .fill{position:absolute;inset:-3px;border-radius:24px;background:var(--lime);opacity:0}
+.day .x{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0}
+.day span{position:relative}
+.quit{font-size:110px;font-weight:900;color:var(--red)}
+
+/* S2 */
+.big-line{font-size:150px;font-weight:900;color:var(--lime);position:relative;display:inline-block;line-height:1.3}
+.underline{position:absolute;left:0;right:0;bottom:6px;height:22px;background:var(--lime);transform-origin:right;opacity:.35;border-radius:12px}
+
+/* S3 */
+.wipe{position:absolute;inset:0;background:var(--lime);transform:translateX(100%);z-index:3}
+.s3{z-index:4;color:var(--bg)}
+.logo1{font-size:200px;font-weight:900;line-height:.95;direction:ltr;letter-spacing:-4px}
+.logo2{font-size:178px;font-weight:900;line-height:1;direction:ltr;color:transparent;-webkit-text-stroke:5px var(--bg);letter-spacing:-2px}
+.logo-ar{font-size:72px;font-weight:900;margin-top:40px}
+.tag{margin-top:34px;font-size:44px;font-weight:700;border:4px solid var(--bg);border-radius:100px;padding:6px 44px}
+
+/* features */
+.fhead{display:flex;align-items:center;gap:26px;margin-bottom:34px;direction:rtl}
+.num{font-size:40px;font-weight:900;color:var(--bg);background:var(--lime);border-radius:100px;padding:0 30px;direction:ltr}
+.ficon{width:110px;height:110px;border-radius:30px;background:var(--card);border:3px solid var(--line);display:flex;align-items:center;justify-content:center}
+.sub{font-size:44px;font-weight:600;color:var(--muted);margin-top:16px}
+.mock{width:900px;margin-top:60px;background:var(--card);border:3px solid var(--line);border-radius:44px;padding:40px 46px;text-align:right}
+.mock-title{display:flex;justify-content:space-between;align-items:center;font-size:36px;font-weight:800;margin-bottom:16px}
+.pill{font-size:28px;font-weight:800;background:rgba(212,255,58,.12);color:var(--lime);padding:2px 22px;border-radius:100px}
+.row{display:flex;align-items:center;justify-content:space-between;padding:22px 0;border-top:2px solid var(--line);font-size:38px;font-weight:700}
+.row .ex{direction:ltr}
+.row .sets{color:var(--muted);direction:ltr;font-weight:600}
+.chk{width:56px;height:56px;border-radius:50%;border:3px solid var(--line);position:relative;flex:none}
+.chk i{position:absolute;inset:-3px;border-radius:50%;background:var(--lime);display:flex;align-items:center;justify-content:center;transform:scale(0)}
+.rowl{display:flex;align-items:center;gap:26px}
+
+.rings{display:flex;justify-content:space-between}
+.ring{text-align:center;width:250px}
+.ring svg{transform:rotate(-90deg)}
+.ring .g{font-size:46px;font-weight:900;margin-top:-170px;height:130px;line-height:130px;direction:ltr}
+.ring .lbl{font-size:34px;font-weight:700;color:var(--muted);margin-top:46px}
+.kcal{display:flex;justify-content:space-between;align-items:baseline;border-top:2px solid var(--line);margin-top:34px;padding-top:26px;font-size:38px;font-weight:700}
+.kcal b{font-size:64px;color:var(--lime);font-weight:900}
+
+/* S5 follow-up */
+.hero-tag{font-size:42px;font-weight:900;background:var(--lime);color:var(--bg);border-radius:100px;padding:0 40px;margin-bottom:18px}
+.phone{width:760px;height:760px;margin-top:44px;border-radius:60px;border:4px solid var(--line);background:#0F0F13;overflow:hidden;text-align:right;position:relative}
+.ph-top{display:flex;align-items:center;gap:22px;padding:28px 36px;border-bottom:2px solid var(--line);background:var(--card)}
+.avatar{width:78px;height:78px;border-radius:50%;background:var(--lime);color:var(--bg);font-weight:900;font-size:34px;display:flex;align-items:center;justify-content:center;direction:ltr}
+.ph-name{font-size:36px;font-weight:800;line-height:1.2}
+.ph-on{font-size:26px;color:var(--lime);font-weight:700}
+.chat{padding:30px 34px;display:flex;flex-direction:column;gap:22px}
+.msg{max-width:78%;font-size:34px;font-weight:700;padding:16px 28px;border-radius:34px;line-height:1.45;opacity:0}
+.me{align-self:flex-start;background:#23232B;border-bottom-right-radius:8px}
+.coach{align-self:flex-end;background:var(--lime);color:var(--bg);border-bottom-left-radius:8px}
+.typing{align-self:flex-end;background:#23232B;border-radius:34px;padding:22px 30px;display:flex;gap:10px;opacity:0}
+.typing i{width:14px;height:14px;border-radius:50%;background:var(--muted)}
+.badges{display:flex;gap:18px;margin-top:40px;flex-wrap:nowrap}
+.badge{font-size:32px;font-weight:800;border:3px solid var(--lime);color:var(--lime);border-radius:100px;padding:6px 26px;display:flex;align-items:center;gap:10px;opacity:0;white-space:nowrap}
+
+/* S6 */
+.cards{display:flex;flex-direction:column;gap:34px;width:900px;margin-top:10px}
+.card{background:var(--card);border:3px solid var(--line);border-radius:44px;padding:34px 40px;text-align:right}
+.card h3{font-size:52px;font-weight:900;margin:0;line-height:1.3}
+.card .sub{font-size:34px;margin-top:4px}
+.vid{margin-top:26px;height:250px;border-radius:30px;background:linear-gradient(135deg,#202028,#16161b);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.play{width:120px;height:120px;border-radius:50%;background:var(--lime);display:flex;align-items:center;justify-content:center}
+.vbar{position:absolute;bottom:0;right:0;left:0;height:12px;background:#2a2a33}
+.vbar i{position:absolute;top:0;bottom:0;left:0;background:var(--lime);width:100%;transform-origin:left;transform:scaleX(0)}
+.vlabel{position:absolute;top:22px;left:26px;direction:ltr;font-size:28px;font-weight:800;color:var(--muted)}
+.chart-wrap{margin-top:16px;position:relative}
+.stat{display:flex;justify-content:space-between;align-items:baseline;margin-top:6px}
+.stat b{font-size:72px;font-weight:900;color:var(--lime);direction:ltr}
+
+/* S7 */
+.chips{display:flex;flex-direction:column;gap:30px;margin:60px 0 70px;width:820px}
+.chip{display:flex;align-items:center;gap:30px;font-size:62px;font-weight:900;background:var(--card);border:3px solid var(--line);border-radius:40px;padding:26px 44px;opacity:0}
+.chip .ck{width:76px;height:76px;border-radius:50%;background:var(--lime);display:flex;align-items:center;justify-content:center;flex:none}
+.who{font-size:50px;font-weight:800}
+.who .dot{color:var(--lime);margin:0 14px}
+
+/* S8 */
+.cta-small{font-size:56px;font-weight:800;color:var(--muted)}
+.cta-big{font-size:170px;font-weight:900;line-height:1.1;color:var(--lime)}
+.btn{margin-top:70px;background:var(--lime);color:var(--bg);font-size:58px;font-weight:900;border-radius:100px;padding:20px 64px;display:flex;align-items:center;gap:24px}
+.limited{margin-top:50px;font-size:42px;font-weight:700;display:flex;align-items:center;gap:18px}
+.live{width:22px;height:22px;border-radius:50%;background:var(--red)}
+.flash{position:absolute;inset:0;background:#fff;opacity:0;z-index:10;pointer-events:none}
+</style>
+</head>
+<body>
+<div id="stage">
+<div class="bg"><div class="grid"></div><div class="blob b1"></div><div class="blob b2"></div></div>
+<div class="brand" id="brand">ONLINE <b>COACHING</b></div>
+
+<!-- S1 hook -->
+<section class="scene" id="s1">
+  <h1 class="t1">كام مرة بدأت تتمرن…</h1>
+  <div class="cal" id="cal"></div>
+  <div class="quit">وبطّلت؟</div>
+</section>
+
+<!-- S2 problem -->
+<section class="scene" id="s2">
+  <h2 class="p1">المشكلة <span class="muted">مش فيك.</span></h2>
+  <h2 class="p2" style="margin-top:60px">المشكلة إن مفيش حد</h2>
+  <div class="big-line p3">متابعك<div class="underline"></div></div>
+</section>
+
+<!-- S3 brand reveal -->
+<div class="wipe" id="wipe"></div>
+<section class="scene s3" id="s3">
+  <div class="logo1">ONLINE</div>
+  <div class="logo2">COACHING</div>
+  <div class="logo-ar">أونلاين كوتشنج</div>
+  <div class="tag">متابعة حقيقية = نتيجة حقيقية</div>
+</section>
+
+<!-- S4 training -->
+<section class="scene" id="s4">
+  <div class="fhead"><div class="ficon">
+    <svg width="66" height="66" viewBox="0 0 24 24" fill="none" stroke="#D4FF3A" stroke-width="2.2" stroke-linecap="round"><path d="M6.5 6.5v11M17.5 6.5v11M3.5 9v6M20.5 9v6M6.5 12h11"/></svg>
+  </div><span class="num">01</span></div>
+  <h2>برنامج تمرين مخصوص</h2>
+  <p class="sub">جيم أو بيت • على قد مستواك ووقتك</p>
+  <div class="mock">
+    <div class="mock-title"><span>اليوم: صدر + تراي</span><span class="pill">أسبوع 3</span></div>
+    <div class="row"><div class="rowl"><div class="chk"><i><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0A0A0C" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i></div><span class="ex">Bench Press</span></div><span class="sets">4 × 10</span></div>
+    <div class="row"><div class="rowl"><div class="chk"><i><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0A0A0C" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i></div><span class="ex">Incline DB Press</span></div><span class="sets">3 × 12</span></div>
+    <div class="row"><div class="rowl"><div class="chk"><i><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0A0A0C" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i></div><span class="ex">Cable Fly</span></div><span class="sets">3 × 15</span></div>
+    <div class="row"><div class="rowl"><div class="chk"><i><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0A0A0C" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i></div><span class="ex">Triceps Pushdown</span></div><span class="sets">3 × 12</span></div>
+  </div>
+</section>
+
+<!-- S5 nutrition -->
+<section class="scene" id="s5">
+  <div class="fhead"><div class="ficon">
+    <svg width="66" height="66" viewBox="0 0 24 24" fill="none" stroke="#D4FF3A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><circle cx="12" cy="13" r="4"/><path d="M12 5V2.5M9.5 3.5h5"/></svg>
+  </div><span class="num">02</span></div>
+  <h2>نظام أكل على مقاسك</h2>
+  <p class="sub">من أكلك العادي • من غير حرمان</p>
+  <div class="mock">
+    <div class="rings">
+      <div class="ring"><svg width="230" height="230"><circle cx="115" cy="115" r="96" stroke="#26262E" stroke-width="20" fill="none"/><circle class="arc" data-p=".82" cx="115" cy="115" r="96" stroke="#D4FF3A" stroke-width="20" fill="none" stroke-linecap="round"/></svg><div class="g"><span class="cnt" data-to="160" data-t0="13.0" data-t1="14.2">0</span>g</div><div class="lbl">بروتين</div></div>
+      <div class="ring"><svg width="230" height="230"><circle cx="115" cy="115" r="96" stroke="#26262E" stroke-width="20" fill="none"/><circle class="arc" data-p=".68" cx="115" cy="115" r="96" stroke="#FFFFFF" stroke-width="20" fill="none" stroke-linecap="round"/></svg><div class="g"><span class="cnt" data-to="230" data-t0="13.15" data-t1="14.3">0</span>g</div><div class="lbl">كارب</div></div>
+      <div class="ring"><svg width="230" height="230"><circle cx="115" cy="115" r="96" stroke="#26262E" stroke-width="20" fill="none"/><circle class="arc" data-p=".55" cx="115" cy="115" r="96" stroke="#7FA2FF" stroke-width="20" fill="none" stroke-linecap="round"/></svg><div class="g"><span class="cnt" data-to="65" data-t0="13.3" data-t1="14.4">0</span>g</div><div class="lbl">دهون</div></div>
+    </div>
+    <div class="kcal"><span>هدفك اليومي</span><span><b class="cnt" data-to="2150" data-t0="13.0" data-t1="14.4" data-comma="1">0</b> سعرة</span></div>
+  </div>
+</section>
+
+<!-- S6 follow-up (hero) -->
+<section class="scene" id="s6">
+  <div class="hero-tag">والأهم</div>
+  <h1 style="font-size:116px">متابعة <span class="lime">حقيقية</span></h1>
+  <div class="phone">
+    <div class="ph-top"><div class="avatar">C</div><div><div class="ph-name">الكوتش</div><div class="ph-on">● أونلاين دلوقتي</div></div></div>
+    <div class="chat">
+      <div class="msg me m1">كابتن خلّصت تمرين النهارده</div>
+      <div class="typing ty1"><i></i><i></i><i></i></div>
+      <div class="msg coach m2">عاش يا بطل! الأوزان زادت؟</div>
+      <div class="msg me m3">زوّدت 5 كيلو في البنش</div>
+      <div class="msg coach m4">تمام، هظبطلك برنامج الأسبوع الجاي</div>
+    </div>
+  </div>
+  <div class="badges">
+    <div class="badge bd1">Check-in أسبوعي</div>
+    <div class="badge bd2">رد يومي</div>
+    <div class="badge bd3">تعديل مستمر</div>
+  </div>
+</section>
+
+<!-- S7 videos + progress -->
+<section class="scene" id="s7">
+  <div class="cards">
+    <div class="card c1">
+      <div style="display:flex;align-items:center;gap:22px"><span class="num">03</span><h3>فيديو شرح لكل تمرين</h3></div>
+      <p class="sub">أداء صح • من غير إصابات</p>
+      <div class="vid"><span class="vlabel">Bench Press • 0:42</span>
+        <div class="play"><svg width="54" height="54" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="#0A0A0C"/></svg></div>
+        <div class="vbar"><i></i></div></div>
+    </div>
+    <div class="card c2">
+      <div style="display:flex;align-items:center;gap:22px"><span class="num">04</span><h3>تتبّع تقدمك أسبوع بأسبوع</h3></div>
+      <div class="stat"><span class="sub" style="margin:0">قوتك في البنش</span><b><span class="cnt" data-from="60" data-to="85" data-t0="19.9" data-t1="21.3">60</span> kg</b></div>
+      <div class="chart-wrap">
+        <svg width="816" height="230" viewBox="0 0 816 230" style="direction:ltr">
+          <g stroke="#26262E" stroke-width="2"><line x1="0" y1="40" x2="816" y2="40"/><line x1="0" y1="115" x2="816" y2="115"/><line x1="0" y1="190" x2="816" y2="190"/></g>
+          <path id="area" d="M20 200 L131 188 L242 176 L353 150 L464 138 L575 108 L686 92 L796 56 L796 230 L20 230Z" fill="url(#gr)" opacity="0"/>
+          <defs><linearGradient id="gr" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#D4FF3A" stop-opacity=".35"/><stop offset="1" stop-color="#D4FF3A" stop-opacity="0"/></linearGradient></defs>
+          <path id="line" d="M20 200 L131 188 L242 176 L353 150 L464 138 L575 108 L686 92 L796 56" fill="none" stroke="#D4FF3A" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle id="dotEnd" cx="796" cy="56" r="16" fill="#D4FF3A" opacity="0"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S8 who -->
+<section class="scene" id="s8">
+  <h2>مناسب ليك لو عايز</h2>
+  <div class="chips">
+    <div class="chip k1"><span class="ck"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#0A0A0C" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>تبني عضل</div>
+    <div class="chip k2"><span class="ck"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#0A0A0C" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>تظبط شكل جسمك</div>
+    <div class="chip k3"><span class="ck"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#0A0A0C" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>ترجّع لياقتك</div>
+  </div>
+  <div class="who w1">شباب وبنات<span class="dot">•</span>مبتدئ أو متقدم</div>
+  <div class="who w2 lime" style="margin-top:14px">من أي مكان في العالم</div>
+</section>
+
+<!-- S9 CTA -->
+<section class="scene" id="s9">
+  <div class="cta-small">متستناش بكرة…</div>
+  <div class="cta-big">ابدأ<br>النهارده</div>
+  <div class="btn">ابعت «ابدأ» في الـ DM
+    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#0A0A0C" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 3L10 14M21 3l-7 18-4-7-7-4z"/></svg>
+  </div>
+  <div class="limited"><span class="live"></span>الأماكن محدودة كل شهر</div>
+</section>
+
+<div class="flash" id="flash"></div>
+</div>
+
+<script>
+const E='cubic-bezier(.2,.8,.2,1)', EI='cubic-bezier(.6,0,.4,1)';
+const updaters=[];
+function A(sel,frames,start,dur,opt={}){
+  document.querySelectorAll(sel).forEach((el,i)=>el.animate(frames,{delay:(start+(opt.stagger||0)*i)*1000,duration:dur*1000,fill:opt.fill||'both',easing:opt.ease||E,iterations:opt.iter||1}));
+}
+const IN=[{opacity:0,transform:'translateY(60px)'},{opacity:1,transform:'none'}];
+const POP=[{opacity:0,transform:'scale(.6)'},{opacity:1,transform:'scale(1.06)',offset:.7},{opacity:1,transform:'scale(1)'}];
+function scene(id,a,b){
+  A('#'+id,[{opacity:0,transform:'scale(1.04)'},{opacity:1,transform:'none'}],a,.35);
+  A('#'+id,[{opacity:1,transform:'none'},{opacity:0,transform:'scale(.96)'}],b-.3,.3,{fill:'forwards',ease:EI});
+}
+function flash(t){A('#flash',[{opacity:0},{opacity:.5},{opacity:0}],t,.25,{fill:'forwards'})}
+
+// ambient background
+A('.b1',[{transform:'translate(0,0)'},{transform:'translate(-260px,700px)'}],0,30,{ease:'linear'});
+A('.b2',[{transform:'translate(0,0)'},{transform:'translate(300px,-600px)'}],0,30,{ease:'linear'});
+A('.grid',[{transform:'translateY(0)'},{transform:'translateY(-270px)'}],0,30,{ease:'linear'});
+A('#brand',[{opacity:0},{opacity:1}],.2,.6);
+
+// S1 hook 0 - 3.3
+scene('s1',0,3.3);
+A('#s1 .t1',IN,.05,.5);
+const cal=document.getElementById('cal');
+for(let d=1;d<=14;d++){const c=document.createElement('div');c.className='day';c.innerHTML='<div class="fill"></div><div class="x"><svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#FF5A5A" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></div><span>'+d+'</span>';cal.appendChild(c)}
+A('#cal .day',[{opacity:0,transform:'scale(.7)'},{opacity:1,transform:'none'}],.3,.3,{stagger:.025});
+document.querySelectorAll('#cal .day').forEach((c,i)=>{
+  if(i<6){c.querySelector('.fill').animate([{opacity:0,transform:'scale(.5)'},{opacity:1,transform:'none'}],{delay:(.75+i*.13)*1000,duration:200,fill:'both',easing:E});
+    c.querySelector('span').animate([{color:'#8E8E99'},{color:'#0A0A0C'}],{delay:(.75+i*.13)*1000,duration:150,fill:'both'});}
+  else{c.querySelector('.x').animate([{opacity:0,transform:'scale(1.8)'},{opacity:1,transform:'none'}],{delay:(1.65+(i-6)*.05)*1000,duration:200,fill:'both',easing:E});
+    c.querySelector('span').animate([{opacity:1},{opacity:0}],{delay:(1.65+(i-6)*.05)*1000,duration:100,fill:'both'});
+    c.animate([{borderColor:'#26262E'},{borderColor:'rgba(255,90,90,.45)'}],{delay:(1.65+(i-6)*.05)*1000,duration:200,fill:'both'});}
+});
+A('#s1 .quit',[{opacity:0,transform:'scale(1.6)'},{opacity:1,transform:'none'}],1.95,.3);
+A('#s1 .quit',[{transform:'translateX(0)'},{transform:'translateX(-16px)'},{transform:'translateX(16px)'},{transform:'translateX(-10px)'},{transform:'translateX(0)'}],2.25,.35,{fill:'none',ease:'linear'});
+
+// S2 problem 3.3 - 7.0
+scene('s2',3.3,6.85);
+A('#s2 .p1',IN,3.4,.45);
+A('#s2 .p2',IN,4.55,.45);
+A('#s2 .p3',POP,5.1,.45);
+A('#s2 .underline',[{transform:'scaleX(0)'},{transform:'scaleX(1)'}],5.5,.45);
+
+// S3 brand 7.0 - 10.0
+A('#wipe',[{transform:'translateX(100%)'},{transform:'translateX(0)'}],6.75,.35,{ease:EI});
+A('#wipe',[{transform:'translateX(0)'},{transform:'translateX(-100%)'}],9.75,.35,{fill:'forwards',ease:EI});
+A('#s3',[{opacity:0},{opacity:1}],7.0,.1);
+A('#s3',[{opacity:1},{opacity:0}],9.7,.15,{fill:'forwards'});
+A('#s3 .logo1',[{opacity:0,transform:'translateX(-200px)'},{opacity:1,transform:'none'}],7.05,.5);
+A('#s3 .logo2',[{opacity:0,transform:'translateX(200px)'},{opacity:1,transform:'none'}],7.2,.5);
+A('#s3 .logo-ar',IN,7.6,.45);
+A('#s3 .tag',POP,8.1,.45);
+A('#s3 .logo1, #s3 .logo2',[{letterSpacing:'-4px'},{letterSpacing:'2px'}],7.6,2.1,{ease:'linear',fill:'none'});
+A('#brand',[{opacity:1},{opacity:0}],6.8,.2,{fill:'forwards'});
+A('#brand',[{opacity:0},{opacity:1}],10.0,.4,{fill:'forwards'});
+
+// S4 training 10.0 - 12.5
+scene('s4',10.0,12.5);
+A('#s4 .fhead',POP,10.05,.4);
+A('#s4 h2',IN,10.15,.4);
+A('#s4 .sub',IN,10.3,.4);
+A('#s4 .mock',IN,10.45,.45);
+A('#s4 .row',[{opacity:0,transform:'translateX(-40px)'},{opacity:1,transform:'none'}],10.6,.3,{stagger:.1});
+A('#s4 .chk i',[{transform:'scale(0)'},{transform:'scale(1.2)',offset:.7},{transform:'scale(1)'}],11.1,.25,{stagger:.25});
+
+// S5 nutrition 12.5 - 15.0
+scene('s5',12.5,15.0);
+A('#s5 .fhead',POP,12.55,.4);
+A('#s5 h2',IN,12.65,.4);
+A('#s5 .sub',IN,12.8,.4);
+A('#s5 .mock',IN,12.9,.45);
+document.querySelectorAll('#s5 .arc').forEach((c,i)=>{const L=2*Math.PI*96;c.style.strokeDasharray=L;
+  c.animate([{strokeDashoffset:L},{strokeDashoffset:L*(1-c.dataset.p)}],{delay:(13.0+i*.15)*1000,duration:1100,fill:'both',easing:E});});
+
+// S6 follow-up 15.0 - 19.0
+flash(14.95);
+scene('s6',15.0,19.0);
+A('#s6 .hero-tag',POP,15.05,.4);
+A('#s6 h1',IN,15.15,.45);
+A('#s6 .phone',[{opacity:0,transform:'translateY(120px)'},{opacity:1,transform:'none'}],15.3,.5);
+const MSG=[{opacity:0,transform:'translateY(30px) scale(.9)'},{opacity:1,transform:'none'}];
+A('#s6 .m1',MSG,15.75,.3);
+A('#s6 .ty1',[{opacity:0},{opacity:1}],16.15,.15);
+A('#s6 .ty1',[{opacity:1,height:'58px',padding:'22px 30px'},{opacity:0,height:'0px',padding:'0px 30px'}],16.6,.15,{fill:'forwards'});
+A('#s6 .ty1 i',[{transform:'translateY(0)'},{transform:'translateY(-8px)'},{transform:'translateY(0)'}],16.15,.3,{stagger:.08,iter:2,fill:'none'});
+A('#s6 .m2',MSG,16.7,.3);
+A('#s6 .m3',MSG,17.2,.3);
+A('#s6 .m4',MSG,17.7,.3);
+A('#s6 .badge',POP,17.9,.35,{stagger:.15});
+
+// S7 videos + progress 19.0 - 22.0
+scene('s7',19.0,22.0);
+A('#s7 .c1',IN,19.05,.45);
+A('#s7 .c2',IN,19.25,.45);
+A('#s7 .play',[{transform:'scale(1)'},{transform:'scale(1.12)'},{transform:'scale(1)'}],19.5,.8,{iter:3,fill:'none',ease:'ease-in-out'});
+A('#s7 .vbar i',[{transform:'scaleX(0)'},{transform:'scaleX(.8)'}],19.5,2.5,{ease:'linear'});
+(()=>{const p=document.getElementById('line');const L=p.getTotalLength();p.style.strokeDasharray=L;
+  p.animate([{strokeDashoffset:L},{strokeDashoffset:0}],{delay:19.9*1000,duration:1400,fill:'both',easing:'cubic-bezier(.4,0,.2,1)'});})();
+A('#area',[{opacity:0},{opacity:1}],20.9,.5);
+A('#dotEnd',[{opacity:0,transform:'scale(0)'},{opacity:1,transform:'scale(1)'}],21.25,.25);
+document.getElementById('dotEnd').style.transformOrigin='796px 56px';
+
+// S8 who 22.0 - 26.0
+scene('s8',22.0,26.0);
+A('#s8 h2',IN,22.05,.45);
+A('#s8 .chip',[{opacity:0,transform:'translateX(-120px)'},{opacity:1,transform:'none'}],22.5,.4,{stagger:.45});
+A('#s8 .ck',[{transform:'scale(0) rotate(-90deg)'},{transform:'scale(1) rotate(0)'}],22.7,.35,{stagger:.45});
+A('#s8 .w1',IN,24.1,.45);
+A('#s8 .w2',IN,24.5,.45);
+
+// S9 CTA 26.0 - 30.0
+flash(25.95);
+A('#s9',[{opacity:0,transform:'scale(1.04)'},{opacity:1,transform:'none'}],26.0,.35);
+A('#s9 .cta-small',IN,26.05,.4);
+A('#s9 .cta-big',POP,26.3,.5);
+A('#s9 .btn',IN,27.0,.45);
+A('#s9 .btn',[{transform:'scale(1)',boxShadow:'0 0 0 0 rgba(212,255,58,.5)'},{transform:'scale(1.05)',boxShadow:'0 0 0 34px rgba(212,255,58,0)'},{transform:'scale(1)',boxShadow:'0 0 0 0 rgba(212,255,58,0)'}],27.5,.9,{iter:3,fill:'none',ease:'ease-in-out'});
+A('#s9 .limited',IN,27.6,.45);
+A('#s9 .live',[{opacity:1},{opacity:.2},{opacity:1}],27.6,.8,{iter:3,fill:'none'});
+
+// number counters
+document.querySelectorAll('.cnt').forEach(el=>{
+  const from=+(el.dataset.from||0),to=+el.dataset.to,t0=+el.dataset.t0,t1=+el.dataset.t1;
+  updaters.push(t=>{let k=Math.min(1,Math.max(0,(t-t0)/(t1-t0)));k=1-Math.pow(1-k,3);
+    let v=Math.round(from+(to-from)*k);el.textContent=el.dataset.comma?v.toLocaleString('en-US'):v;});
+});
+
+window.renderAt=t=>{document.getAnimations().forEach(a=>{a.pause();a.currentTime=t*1000});updaters.forEach(f=>f(t));};
+window.renderAt(0);
+</script>
+</body>
+</html>
